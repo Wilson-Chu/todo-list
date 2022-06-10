@@ -2,8 +2,27 @@ import React, { Component } from "react";
 import "./App.css";
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      task: { text: "" },
+      tasks: [],
+    };
+  }
+
   render() {
-    return <div>Hello World</div>;
+    const { task, tasks } = this.state;
+
+    return (
+      <div className="App">
+        <form>
+          <label htmlFor="taskInput">Enter task</label>
+          <input type="text" id="taskInput" />
+          <button type="submit">Add Task</button>
+        </form>
+      </div>
+    );
   }
 }
 
