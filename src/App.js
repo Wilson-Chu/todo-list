@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Overview from "./components/Overview";
+import uniqid from "uniqid";
 import "./App.css";
 
 class App extends Component {
@@ -6,7 +8,7 @@ class App extends Component {
     super();
 
     this.state = {
-      task: { text: "" },
+      task: { text: "", id: uniqid() },
       tasks: [],
     };
   }
@@ -15,6 +17,7 @@ class App extends Component {
     this.setState({
       task: {
         text: e.target.value,
+        id: this.state.task.id,
       },
     });
   };
@@ -23,7 +26,7 @@ class App extends Component {
     e.preventDefault();
     this.setState({
       tasks: this.state.tasks.concat(this.state.task),
-      task: { text: "" },
+      task: { text: "", id: uniqid() },
     });
   };
 
@@ -42,6 +45,7 @@ class App extends Component {
           />
           <button type="submit">Add Task</button>
         </form>
+        <Overview tasks={tasks} />
       </div>
     );
   }
